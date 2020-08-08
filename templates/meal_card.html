@@ -1,0 +1,10 @@
+<div class="col-12 col-md-4">
+<div class="card mb-3">
+  <img src="/static/pictures/{{meal.picture}}" width="300" height="200" class="card-img-top" alt="">
+  <div class="card-body">
+    <h4 class="h5 card-title">{{meal.title}}</h4>
+    <p class="card-text">{{meal.description | truncate(60)}}</p>
+    <a href="/addtocart/{{meal.id}}" btn btn-danger>В корзину</a>
+  </div>
+</div>
+</div>
