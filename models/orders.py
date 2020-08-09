@@ -1,4 +1,4 @@
-from models import db
+from models import db, orders_meals_association
 from datetime import datetime
 
 class Order(db.Model):
@@ -11,8 +11,8 @@ class Order(db.Model):
     phone = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
 
-    # meals = db.relationship('Meal', secondary=orders_meals_association, back_populates='orders')
-    #
+    meals = db.relationship('Meal', secondary=orders_meals_association, back_populates='orders')
+
     account = db.relationship("Account")
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.id'))
 
@@ -25,7 +25,8 @@ class Order(db.Model):
             email=kwargs.get('email'),
             phone=kwargs.get('phone'),
             address=kwargs.get('address'),
-            account=kwargs.get('account')
+            account=kwargs.get('account'),
+            meals=kwargs.get('meals')
             )
         db.session.add(new_entry)
         return new_entry

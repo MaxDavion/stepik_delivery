@@ -9,6 +9,7 @@
 
 <body>
   <main class="container">
+    {% include 'flash_message.html' %}
     <div class="row">
       <div class="col-8 col-lg-4 offset-2 offset-lg-4">
         <form method="POST" class="form-signin pt-5">
@@ -36,8 +37,20 @@
             </div>
           {% endfor %}
           </div>
+          <div class="form-label-group">
+          {{ form.confirm_password.label(class_="mb-1 mt-2")}}
+          {{ form.confirm_password(class_="form-control")}}
+          {% for err in form.confirm_password.errors %}
+            <div class="text-danger font-italic">
+              <small> {{ err }} </small>
+            </div>
+          {% endfor %}
+          </div>
           <div class="checkbox mb-3"></div>
             {{ form.submit(class="btn btn-lg btn-danger btn-block") }}
+          <div class="checkbox mt-3">
+            <a href="/login/">У меня уже есть аккаунт</a>
+          </div>
         </form>
       </div>
     </div>

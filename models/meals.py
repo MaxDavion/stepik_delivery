@@ -1,4 +1,4 @@
-from models import db
+from models import db, orders_meals_association
 
 
 class Meal(db.Model):
@@ -12,6 +12,6 @@ class Meal(db.Model):
     category = db.relationship("Category")
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
 
-    # orders = db.relationship('Order', secondary=orders_meals_association, back_populates='meals')
+    orders = db.relationship('Order', secondary=orders_meals_association, back_populates='meals')
 
 
